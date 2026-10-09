@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabelInspect — Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="brand">
+        <div class="logo">LI</div>
+        <h1>LabelInspect</h1>
+        <p>Food Label Inspection & Compliance</p>
+      </div>
+
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email / Username</label>
+          <input type="text" id="email" class="form-control" placeholder="inspector@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <div class="flex-between mb-16">
+          <label class="text-sm" style="display:flex;align-items:center;gap:6px;">
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" class="text-sm">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+      </form>
+
+      <p class="text-center text-sm text-muted mt-24">
+        Demo: any email + password works
+      </p>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

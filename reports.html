@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — LabelInspect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">LI</div>
+        <div>
+          <h1>LabelInspect</h1>
+          <span>Compliance System</span>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html"><span class="icon">📊</span> Dashboard</a></li>
+        <li><a href="inspection.html"><span class="icon">🔍</span> New Inspection</a></li>
+        <li><a href="history.html"><span class="icon">📋</span> History & Evidence</a></li>
+        <li><a href="products.html"><span class="icon">📦</span> Product Catalogue</a></li>
+        <li><a href="rules.html"><span class="icon">⚖️</span> Compliance Rules</a></li>
+        <li><a href="reports.html" class="active"><span class="icon">📄</span> Reports</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar">SV</div>
+          <div>
+            <strong style="color:var(--text);font-size:13px;">Sathish V.</strong><br>
+            <span style="font-size:11px;">Inspector</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <h2>Reports</h2>
+        <div class="topbar-actions">
+          <button class="btn btn-secondary btn-sm">Filter</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="card mb-16">
+          <div class="flex gap-12" style="flex-wrap:wrap;">
+            <input type="text" class="form-control" style="max-width:260px;" placeholder="Search reports...">
+            <select class="form-control" style="max-width:150px;">
+              <option>All Status</option>
+              <option>Compliant</option>
+              <option>Non-Compliant</option>
+            </select>
+            <input type="date" class="form-control" style="max-width:150px;">
+          </div>
+        </div>
+
+        <div class="card mb-24">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Inspection</th>
+                  <th>Product</th>
+                  <th>Result</th>
+                  <th>Generated</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#RPT-248</strong></td>
+                  <td>#INS-248</td>
+                  <td>Amul Butter 500g</td>
+                  <td><span class="badge badge-success">Compliant</span></td>
+                  <td>09 Oct 2026, 09:20</td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm" onclick="document.getElementById('report-preview').classList.remove('hidden')">Preview</button>
+                    <button class="btn btn-primary btn-sm">⬇ PDF</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#RPT-247</strong></td>
+                  <td>#INS-247</td>
+                  <td>Maggi Noodles 70g</td>
+                  <td><span class="badge badge-danger">Non-Compliant</span></td>
+                  <td>09 Oct 2026, 08:45</td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm">Preview</button>
+                    <button class="btn btn-primary btn-sm">⬇ PDF</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#RPT-245</strong></td>
+                  <td>#INS-245</td>
+                  <td>Tata Salt 1kg</td>
+                  <td><span class="badge badge-success">Compliant</span></td>
+                  <td>08 Oct 2026, 16:10</td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm">Preview</button>
+                    <button class="btn btn-primary btn-sm">⬇ PDF</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Report Preview -->
+        <div id="report-preview" class="card">
+          <div class="card-header">
+            <h3>Report Preview — #RPT-248</h3>
+            <div class="flex gap-8">
+              <button class="btn btn-secondary btn-sm">Print</button>
+              <button class="btn btn-primary btn-sm">Download PDF</button>
+            </div>
+          </div>
+
+          <div style="border:1px solid var(--border);border-radius:8px;padding:24px;max-width:700px;margin:0 auto;background:white;">
+            <div style="text-align:center;margin-bottom:20px;border-bottom:2px solid var(--primary);padding-bottom:16px;">
+              <div style="font-size:18px;font-weight:700;color:var(--primary);">LabelInspect</div>
+              <div style="font-size:13px;color:var(--text-muted);">Food Label Inspection Report</div>
+            </div>
+
+            <div class="grid-2 mb-16" style="font-size:13px;">
+              <div>
+                <strong>Inspection ID:</strong> #INS-248<br>
+                <strong>Report ID:</strong> #RPT-248<br>
+                <strong>Date:</strong> 09 October 2026, 09:19
+              </div>
+              <div>
+                <strong>Inspector:</strong> Sathish Vishnu A<br>
+                <strong>Role:</strong> Inspector<br>
+                <strong>Location:</strong> Facility A
+              </div>
+            </div>
+
+            <h4 style="font-size:14px;margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:4px;">Product Information</h4>
+            <div style="font-size:13px;margin-bottom:16px;">
+              <strong>Amul Pasteurised Butter</strong> · Brand: Amul · GTIN: 8901030865483<br>
+              Net Qty: 500 g · MRP: ₹285.00 · Category: Dairy
+            </div>
+
+            <h4 style="font-size:14px;margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:4px;">Verified Label Data</h4>
+            <div style="font-size:13px;margin-bottom:16px;">
+              Mfg Date: 15/08/2026 · Best Before: 15/02/2027<br>
+              FSSAI Lic: 10012021000123 · Manufacturer: GCMMF Ltd, Anand<br>
+              Ingredients: Milk, Salt
+            </div>
+
+            <h4 style="font-size:14px;margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:4px;">Compliance Result</h4>
+            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:12px;margin-bottom:16px;">
+              <strong style="color:var(--success);font-size:15px;">✅ COMPLIANT</strong>
+              <div style="font-size:13px;margin-top:4px;">All applicable rules in FSSAI Basic Label Pack v2.1 passed. No violations recorded.</div>
+            </div>
+
+            <h4 style="font-size:14px;margin-bottom:8px;border-bottom:1px solid var(--border);padding-bottom:4px;">Rule Summary</h4>
+            <div style="font-size:12px;color:var(--text-muted);">
+              FSSAI License · MRP · Net Quantity · Date Marking · Manufacturer · Ingredients — all Passed
+            </div>
+
+            <div style="margin-top:24px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--text-muted);text-align:center;">
+              Generated by LabelInspect · Errors2Experts · This is an inspection-assistance report. Not a laboratory certificate.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

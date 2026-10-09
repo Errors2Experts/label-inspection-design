@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Inspection — LabelInspect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">LI</div>
+        <div>
+          <h1>LabelInspect</h1>
+          <span>Compliance System</span>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html"><span class="icon">📊</span> Dashboard</a></li>
+        <li><a href="inspection.html" class="active"><span class="icon">🔍</span> New Inspection</a></li>
+        <li><a href="history.html"><span class="icon">📋</span> History & Evidence</a></li>
+        <li><a href="products.html"><span class="icon">📦</span> Product Catalogue</a></li>
+        <li><a href="rules.html"><span class="icon">⚖️</span> Compliance Rules</a></li>
+        <li><a href="reports.html"><span class="icon">📄</span> Reports</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar">SV</div>
+          <div>
+            <strong style="color:var(--text);font-size:13px;">Sathish V.</strong><br>
+            <span style="font-size:11px;">Inspector</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <h2>New Inspection</h2>
+        <div class="topbar-actions">
+          <a href="dashboard.html" class="btn btn-secondary btn-sm">Cancel</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- Steps -->
+        <div class="steps">
+          <div class="step active">1. Product</div>
+          <div class="step">2. Images</div>
+          <div class="step">3. Extract</div>
+          <div class="step">4. Verify</div>
+          <div class="step">5. Result</div>
+        </div>
+
+        <div class="card">
+          <!-- STEP 1: Product / Barcode -->
+          <div id="step-1" class="wizard-panel">
+            <h3 class="mb-16">Identify Product</h3>
+            <p class="text-sm text-muted mb-16">Scan barcode or enter GTIN/EAN manually. If product is unknown, you can continue with image-based inspection.</p>
+
+            <div class="grid-2">
+              <div>
+                <div class="form-group">
+                  <label>Barcode (GTIN / EAN / UPC)</label>
+                  <div class="flex gap-8">
+                    <input type="text" id="barcode-input" class="form-control" placeholder="Scan or type barcode">
+                    <button type="button" class="btn btn-secondary" onclick="mockBarcodeScan()">📷 Scan</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Or search product name</label>
+                  <input type="text" class="form-control" placeholder="Search catalogue...">
+                </div>
+              </div>
+              <div id="product-info" class="hidden">
+                <div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:16px;">
+                  <div class="text-sm text-muted mb-8">Product Found</div>
+                  <strong>Amul Pasteurised Butter</strong>
+                  <div class="text-sm mt-8">
+                    <div>Brand: Amul</div>
+                    <div>Net Qty: 500 g</div>
+                    <div>Category: Dairy</div>
+                    <div>GTIN: 8901030865483</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-16">
+              <label class="text-sm" style="display:flex;align-items:center;gap:6px;">
+                <input type="checkbox" id="unknown-product"> Product not in catalogue — proceed with images only
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 2: Images -->
+          <div id="step-2" class="wizard-panel hidden">
+            <h3 class="mb-16">Capture Package Images</h3>
+            <p class="text-sm text-muted mb-16">Capture front label, back label, and any other relevant panels. Clear, well-lit images improve OCR accuracy.</p>
+
+            <div class="upload-zone" onclick="document.getElementById('file-input').click()">
+              <div class="upload-icon">📷</div>
+              <p>Click to capture or upload images</p>
+              <p class="hint">JPG, PNG · Max 10 MB each · Multiple files allowed</p>
+              <input type="file" id="file-input" accept="image/*" multiple capture="environment" style="display:none" onchange="handleImageUpload(this)">
+            </div>
+
+            <div id="image-preview" class="image-preview"></div>
+          </div>
+
+          <!-- STEP 3: OCR + AI -->
+          <div id="step-3" class="wizard-panel hidden">
+            <h3 class="mb-16">OCR & AI Extraction</h3>
+            <p class="text-sm text-muted mb-16">Images are processed to extract text. AI structures the text into label fields. You will verify everything in the next step.</p>
+
+            <div class="flex gap-12 mb-16">
+              <button type="button" class="btn btn-primary" onclick="runOCR()">▶ Run OCR + AI</button>
+              <span id="ocr-status" class="hidden"><span class="badge badge-info">Ready</span></span>
+            </div>
+
+            <div id="ai-fields" class="hidden">
+              <div class="field-grid">
+                <div class="field-item">
+                  <label>Product Name</label>
+                  <div class="value">Amul Pasteurised Butter</div>
+                </div>
+                <div class="field-item">
+                  <label>Brand</label>
+                  <div class="value">Amul</div>
+                </div>
+                <div class="field-item">
+                  <label>MRP</label>
+                  <div class="value">₹285.00</div>
+                </div>
+                <div class="field-item">
+                  <label>Net Quantity</label>
+                  <div class="value">500 g</div>
+                </div>
+                <div class="field-item">
+                  <label>Mfg Date</label>
+                  <div class="value">15/08/2026</div>
+                </div>
+                <div class="field-item">
+                  <label>Best Before</label>
+                  <div class="value">15/02/2027</div>
+                </div>
+                <div class="field-item">
+                  <label>FSSAI Lic. No.</label>
+                  <div class="value">10012021000123</div>
+                </div>
+                <div class="field-item">
+                  <label>Manufacturer</label>
+                  <div class="value">GCMMF Ltd, Anand</div>
+                </div>
+              </div>
+              <p class="text-sm text-muted mt-16">Ingredients extracted: Milk, Salt · Confidence: High</p>
+            </div>
+          </div>
+
+          <!-- STEP 4: Verify -->
+          <div id="step-4" class="wizard-panel hidden">
+            <h3 class="mb-16">Inspector Verification</h3>
+            <p class="text-sm text-muted mb-16">Review and correct any extracted fields. AI assists — you decide. Verification is mandatory before compliance evaluation.</p>
+
+            <div class="field-grid">
+              <div class="field-item">
+                <label>Product Name</label>
+                <input type="text" value="Amul Pasteurised Butter">
+              </div>
+              <div class="field-item">
+                <label>Brand</label>
+                <input type="text" value="Amul">
+              </div>
+              <div class="field-item">
+                <label>MRP (₹)</label>
+                <input type="text" value="285.00">
+              </div>
+              <div class="field-item">
+                <label>Net Quantity</label>
+                <input type="text" value="500 g">
+              </div>
+              <div class="field-item">
+                <label>Mfg Date</label>
+                <input type="text" value="15/08/2026">
+              </div>
+              <div class="field-item">
+                <label>Best Before / Expiry</label>
+                <input type="text" value="15/02/2027">
+              </div>
+              <div class="field-item">
+                <label>FSSAI License No.</label>
+                <input type="text" value="10012021000123">
+              </div>
+              <div class="field-item">
+                <label>Manufacturer / Packer</label>
+                <input type="text" value="GCMMF Ltd, Anand">
+              </div>
+            </div>
+
+            <div class="form-group mt-16">
+              <label>Ingredients (verified)</label>
+              <textarea class="form-control">Milk, Salt</textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Inspector Remarks</label>
+              <textarea class="form-control" placeholder="Optional notes..."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 5: Compliance Result -->
+          <div id="step-5" class="wizard-panel hidden">
+            <h3 class="mb-16">Compliance Evaluation</h3>
+            <p class="text-sm text-muted mb-16">Verified data is evaluated against the applicable rule pack. Rules decide the final result.</p>
+
+            <button type="button" class="btn btn-primary mb-16" onclick="runCompliance()">▶ Evaluate Against Rules</button>
+
+            <div id="compliance-result" class="hidden">
+              <div class="result-panel pass">
+                <h3>✅ Compliant</h3>
+                <p class="text-sm">All applicable rules passed. No violations found.</p>
+              </div>
+
+              <div class="card mt-16" style="padding:16px;">
+                <h4 class="mb-12" style="font-size:14px;">Rule Evaluation Summary</h4>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Rule</th>
+                        <th>Status</th>
+                        <th>Note</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>FSSAI License present</td>
+                        <td><span class="badge badge-success">Pass</span></td>
+                        <td>License No. found</td>
+                      </tr>
+                      <tr>
+                        <td>MRP declared</td>
+                        <td><span class="badge badge-success">Pass</span></td>
+                        <td>₹285.00</td>
+                      </tr>
+                      <tr>
+                        <td>Net quantity declared</td>
+                        <td><span class="badge badge-success">Pass</span></td>
+                        <td>500 g</td>
+                      </tr>
+                      <tr>
+                        <td>Best-before / Expiry present</td>
+                        <td><span class="badge badge-success">Pass</span></td>
+                        <td>15/02/2027</td>
+                      </tr>
+                      <tr>
+                        <td>Manufacturer details present</td>
+                        <td><span class="badge badge-success">Pass</span></td>
+                        <td>GCMMF Ltd</td>
+                      </tr>
+                      <tr>
+                        <td>Ingredients list present</td>
+                        <td><span class="badge badge-success">Pass</span></td>
+                        <td>Milk, Salt</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation buttons -->
+          <div class="flex-between mt-24">
+            <button type="button" id="btn-prev" class="btn btn-secondary" onclick="prevStep()" style="display:none;">← Previous</button>
+            <div></div>
+            <button type="button" id="btn-next" class="btn btn-primary" onclick="nextStep()">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

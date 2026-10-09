@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History & Evidence — LabelInspect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">LI</div>
+        <div>
+          <h1>LabelInspect</h1>
+          <span>Compliance System</span>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html"><span class="icon">📊</span> Dashboard</a></li>
+        <li><a href="inspection.html"><span class="icon">🔍</span> New Inspection</a></li>
+        <li><a href="history.html" class="active"><span class="icon">📋</span> History & Evidence</a></li>
+        <li><a href="products.html"><span class="icon">📦</span> Product Catalogue</a></li>
+        <li><a href="rules.html"><span class="icon">⚖️</span> Compliance Rules</a></li>
+        <li><a href="reports.html"><span class="icon">📄</span> Reports</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar">SV</div>
+          <div>
+            <strong style="color:var(--text);font-size:13px;">Sathish V.</strong><br>
+            <span style="font-size:11px;">Inspector</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <h2>History & Evidence</h2>
+        <div class="topbar-actions">
+          <a href="inspection.html" class="btn btn-primary btn-sm">+ New Inspection</a>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="card mb-16">
+          <div class="flex gap-12" style="flex-wrap:wrap;">
+            <input type="text" id="search-history" class="form-control" style="max-width:280px;" placeholder="Search by ID, product, barcode..." oninput="filterTable('search-history','history-table')">
+            <select class="form-control" style="max-width:160px;">
+              <option value="">All Status</option>
+              <option>Compliant</option>
+              <option>Non-Compliant</option>
+              <option>Needs Review</option>
+            </select>
+            <input type="date" class="form-control" style="max-width:160px;">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table id="history-table">
+              <thead>
+                <tr>
+                  <th>Inspection ID</th>
+                  <th>Product</th>
+                  <th>Barcode</th>
+                  <th>Inspector</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#INS-248</strong></td>
+                  <td>Amul Butter 500g</td>
+                  <td>8901030865483</td>
+                  <td>Sathish V.</td>
+                  <td><span class="badge badge-success">Compliant</span></td>
+                  <td>09 Oct 2026</td>
+                  <td>
+                    <a href="#" class="btn btn-secondary btn-sm">View</a>
+                    <a href="reports.html" class="btn btn-secondary btn-sm">Report</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#INS-247</strong></td>
+                  <td>Maggi Noodles 70g</td>
+                  <td>8901058901234</td>
+                  <td>Sathish V.</td>
+                  <td><span class="badge badge-danger">Non-Compliant</span></td>
+                  <td>09 Oct 2026</td>
+                  <td>
+                    <a href="#" class="btn btn-secondary btn-sm">View</a>
+                    <a href="reports.html" class="btn btn-secondary btn-sm">Report</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#INS-246</strong></td>
+                  <td>Britannia Good Day</td>
+                  <td>8901063123456</td>
+                  <td>Subashini N.</td>
+                  <td><span class="badge badge-warning">Review</span></td>
+                  <td>08 Oct 2026</td>
+                  <td>
+                    <a href="#" class="btn btn-secondary btn-sm">View</a>
+                    <a href="reports.html" class="btn btn-secondary btn-sm">Report</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#INS-245</strong></td>
+                  <td>Tata Salt 1kg</td>
+                  <td>8901030865999</td>
+                  <td>Manishashri P.</td>
+                  <td><span class="badge badge-success">Compliant</span></td>
+                  <td>08 Oct 2026</td>
+                  <td>
+                    <a href="#" class="btn btn-secondary btn-sm">View</a>
+                    <a href="reports.html" class="btn btn-secondary btn-sm">Report</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#INS-244</strong></td>
+                  <td>Parle-G 800g</td>
+                  <td>8901719100012</td>
+                  <td>Sathish V.</td>
+                  <td><span class="badge badge-success">Compliant</span></td>
+                  <td>07 Oct 2026</td>
+                  <td>
+                    <a href="#" class="btn btn-secondary btn-sm">View</a>
+                    <a href="reports.html" class="btn btn-secondary btn-sm">Report</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#INS-243</strong></td>
+                  <td>Fortune Sunlite Oil</td>
+                  <td>8901030123456</td>
+                  <td>Subashini N.</td>
+                  <td><span class="badge badge-danger">Non-Compliant</span></td>
+                  <td>07 Oct 2026</td>
+                  <td>
+                    <a href="#" class="btn btn-secondary btn-sm">View</a>
+                    <a href="reports.html" class="btn btn-secondary btn-sm">Report</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Evidence detail preview (example) -->
+        <div class="card mt-24">
+          <div class="card-header">
+            <h3>Evidence Preview — #INS-248</h3>
+          </div>
+          <div class="grid-2">
+            <div>
+              <p class="text-sm text-muted mb-8">Captured Images</p>
+              <div class="image-preview">
+                <div class="thumb" style="display:flex;align-items:center;justify-content:center;font-size:24px;background:#e2e8f0;">📷</div>
+                <div class="thumb" style="display:flex;align-items:center;justify-content:center;font-size:24px;background:#e2e8f0;">📷</div>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm text-muted mb-8">Audit Trail</p>
+              <div class="text-sm" style="display:flex;flex-direction:column;gap:6px;">
+                <div>09:14 — Inspection created by Sathish V.</div>
+                <div>09:15 — Barcode scanned · Product linked</div>
+                <div>09:16 — 2 images uploaded</div>
+                <div>09:17 — OCR + AI extraction completed</div>
+                <div>09:18 — Inspector verified data</div>
+                <div>09:19 — Compliance evaluated · Compliant</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalogue — LabelInspect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">LI</div>
+        <div>
+          <h1>LabelInspect</h1>
+          <span>Compliance System</span>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html"><span class="icon">📊</span> Dashboard</a></li>
+        <li><a href="inspection.html"><span class="icon">🔍</span> New Inspection</a></li>
+        <li><a href="history.html"><span class="icon">📋</span> History & Evidence</a></li>
+        <li><a href="products.html" class="active"><span class="icon">📦</span> Product Catalogue</a></li>
+        <li><a href="rules.html"><span class="icon">⚖️</span> Compliance Rules</a></li>
+        <li><a href="reports.html"><span class="icon">📄</span> Reports</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar">SV</div>
+          <div>
+            <strong style="color:var(--text);font-size:13px;">Sathish V.</strong><br>
+            <span style="font-size:11px;">Inspector</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <header class="topbar">
+        <h2>Product Catalogue</h2>
+        <div class="topbar-actions">
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('add-product-form').classList.toggle('hidden')">+ Add Product</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- Add Product Form (hidden by default) -->
+        <div id="add-product-form" class="card mb-16 hidden">
+          <h3 class="mb-16">Manual Product Entry</h3>
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Product Name *</label>
+              <input type="text" class="form-control" placeholder="e.g. Amul Butter">
+            </div>
+            <div class="form-group">
+              <label>Brand</label>
+              <input type="text" class="form-control" placeholder="e.g. Amul">
+            </div>
+            <div class="form-group">
+              <label>Barcode (GTIN/EAN)</label>
+              <input type="text" class="form-control" placeholder="8901030865483">
+            </div>
+            <div class="form-group">
+              <label>Net Quantity</label>
+              <input type="text" class="form-control" placeholder="500 g">
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select class="form-control">
+                <option>Dairy</option>
+                <option>Snacks</option>
+                <option>Beverages</option>
+                <option>Oils & Fats</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Manufacturer</label>
+              <input type="text" class="form-control" placeholder="Manufacturer name">
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <button class="btn btn-primary">Save Product</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('add-product-form').classList.add('hidden')">Cancel</button>
+          </div>
+        </div>
+
+        <div class="card mb-16">
+          <div class="flex gap-12">
+            <input type="text" id="search-products" class="form-control" style="max-width:300px;" placeholder="Search by name, brand, barcode..." oninput="filterTable('search-products','products-table')">
+            <select class="form-control" style="max-width:160px;">
+              <option value="">All Categories</option>
+              <option>Dairy</option>
+              <option>Snacks</option>
+              <option>Beverages</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table id="products-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Brand</th>
+                  <th>Barcode</th>
+                  <th>Category</th>
+                  <th>Net Qty</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Amul Pasteurised Butter</strong></td>
+                  <td>Amul</td>
+                  <td>8901030865483</td>
+                  <td>Dairy</td>
+                  <td>500 g</td>
+                  <td><a href="#" class="btn btn-secondary btn-sm">View</a> <a href="#" class="btn btn-secondary btn-sm">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Maggi 2-Minute Noodles</strong></td>
+                  <td>Nestlé</td>
+                  <td>8901058901234</td>
+                  <td>Snacks</td>
+                  <td>70 g</td>
+                  <td><a href="#" class="btn btn-secondary btn-sm">View</a> <a href="#" class="btn btn-secondary btn-sm">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Britannia Good Day Cookies</strong></td>
+                  <td>Britannia</td>
+                  <td>8901063123456</td>
+                  <td>Snacks</td>
+                  <td>200 g</td>
+                  <td><a href="#" class="btn btn-secondary btn-sm">View</a> <a href="#" class="btn btn-secondary btn-sm">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Tata Salt</strong></td>
+                  <td>Tata</td>
+                  <td>8901030865999</td>
+                  <td>Other</td>
+                  <td>1 kg</td>
+                  <td><a href="#" class="btn btn-secondary btn-sm">View</a> <a href="#" class="btn btn-secondary btn-sm">Edit</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Parle-G Original</strong></td>
+                  <td>Parle</td>
+                  <td>8901719100012</td>
+                  <td>Snacks</td>
+                  <td>800 g</td>
+                  <td><a href="#" class="btn btn-secondary btn-sm">View</a> <a href="#" class="btn btn-secondary btn-sm">Edit</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>

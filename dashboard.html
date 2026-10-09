@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — LabelInspect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">LI</div>
+        <div>
+          <h1>LabelInspect</h1>
+          <span>Compliance System</span>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="active"><span class="icon">📊</span> Dashboard</a></li>
+        <li><a href="inspection.html"><span class="icon">🔍</span> New Inspection</a></li>
+        <li><a href="history.html"><span class="icon">📋</span> History & Evidence</a></li>
+        <li><a href="products.html"><span class="icon">📦</span> Product Catalogue</a></li>
+        <li><a href="rules.html"><span class="icon">⚖️</span> Compliance Rules</a></li>
+        <li><a href="reports.html"><span class="icon">📄</span> Reports</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="user-avatar">SV</div>
+          <div>
+            <strong style="color:var(--text);font-size:13px;">Sathish V.</strong><br>
+            <span style="font-size:11px;">Inspector</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content">
+      <header class="topbar">
+        <h2>Dashboard</h2>
+        <div class="topbar-actions">
+          <a href="inspection.html" class="btn btn-primary btn-sm">+ New Inspection</a>
+          <div class="user-chip">
+            <div class="user-avatar">SV</div>
+            <span>Sathish Vishnu</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- Stats -->
+        <div class="grid-4 mb-24">
+          <div class="stat-card">
+            <div class="stat-label">Total Inspections</div>
+            <div class="stat-value">248</div>
+            <div class="stat-change up">↑ 12 this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Compliant</div>
+            <div class="stat-value" style="color:var(--success);">186</div>
+            <div class="stat-change up">75%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Non-Compliant</div>
+            <div class="stat-value" style="color:var(--danger);">42</div>
+            <div class="stat-change down">17%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Needs Review</div>
+            <div class="stat-value" style="color:var(--warning);">20</div>
+            <div class="stat-change">8%</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Recent Inspections -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Recent Inspections</h3>
+              <a href="history.html" class="text-sm">View all</a>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#INS-248</td>
+                    <td>Amul Butter 500g</td>
+                    <td><span class="badge badge-success">Compliant</span></td>
+                    <td>09 Oct</td>
+                  </tr>
+                  <tr>
+                    <td>#INS-247</td>
+                    <td>Maggi Noodles 70g</td>
+                    <td><span class="badge badge-danger">Non-Compliant</span></td>
+                    <td>09 Oct</td>
+                  </tr>
+                  <tr>
+                    <td>#INS-246</td>
+                    <td>Britannia Good Day</td>
+                    <td><span class="badge badge-warning">Review</span></td>
+                    <td>08 Oct</td>
+                  </tr>
+                  <tr>
+                    <td>#INS-245</td>
+                    <td>Tata Salt 1kg</td>
+                    <td><span class="badge badge-success">Compliant</span></td>
+                    <td>08 Oct</td>
+                  </tr>
+                  <tr>
+                    <td>#INS-244</td>
+                    <td>Parle-G 800g</td>
+                    <td><span class="badge badge-success">Compliant</span></td>
+                    <td>07 Oct</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Violation Summary -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Top Violations</h3>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="flex-between">
+                <span class="text-sm">Missing FSSAI License No.</span>
+                <span class="badge badge-danger">18</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm">Expiry date not legible</span>
+                <span class="badge badge-danger">12</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm">MRP mismatch</span>
+                <span class="badge badge-warning">9</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm">Ingredients incomplete</span>
+                <span class="badge badge-warning">7</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm">Net quantity missing</span>
+                <span class="badge badge-neutral">5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
